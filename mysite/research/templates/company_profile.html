@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ name }}</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+        h1 {
+            color: #2c3e50;
+        }
+        p {
+            font-size: 16px;
+            color: #555;
+        }
+        form {
+            margin-bottom: 20px;
+        }
+        input[type="text"] {
+            padding: 8px;
+            width: 250px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        button {
+            padding: 8px 12px;
+            border: none;
+            border-radius: 5px;
+            background-color: #3498db;
+            color: white;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #2980b9;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            margin: 8px 0;
+        }
+        a {
+            text-decoration: none;
+            color: #3498db;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h1>{{ name }}</h1>
+    <p>{{ description }}</p>
+
+    <!-- Search Form -->
+    <form method="get" action="">
+        <input type="text" name="q" placeholder="Enter company name" value="{{ name }}">
+        <button type="submit">Search</button>
+    </form>
+
+    <h3>Latest News</h3>
+    <ul>
+        {% for article in news %}
+            <li><a href="{{ article.link }}" target="_blank">{{ article.title }}</a></li>
+        {% empty %}
+            <li>No recent news found.</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
